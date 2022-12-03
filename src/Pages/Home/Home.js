@@ -6,8 +6,10 @@ import Footer from '../../Layouts/Footer/Footer'
 const Home = () => {
   return (
     <>
-      <Nav />
-      <Dashboard />
+      <div className='h-screen flex flex-col'>
+        <Nav />
+        <Dashboard />
+      </div>
       <Footer />
     </>
   )
