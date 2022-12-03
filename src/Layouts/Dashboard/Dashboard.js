@@ -3,6 +3,12 @@ import search from "../../Assets/Images/Icons/search.svg";
 import logo from "../../Assets/Images/Icons/logo.png";
 
 const Dashboard = () => {
+  const handleSubmit = () => {
+    // redirect to results page, passing the search input as a parameter (for the api call)
+
+    // make an api call (getblockinfo), passing the search input as a parameter. redirect to the block results page, passing the response
+  }
+
   return (
     <section className="bg-neutral-0 mb-0 flex-grow flex flex-col justify-center items-center">
       <div className="w-6/12 h-fit flex border border-black justify-between items-center">
@@ -16,7 +22,7 @@ const Dashboard = () => {
             type="text"
             placeholder="Search for block height, hash, transaction or address..."
           ></input>
-          <button className="h-full" type="submit">
+          <button className="h-full" type="submit" onSubmit={handleSubmit}>
             <img
               className="h-full my-auto"
               src={search}
