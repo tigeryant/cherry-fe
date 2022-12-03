@@ -19,6 +19,9 @@ module.exports = {
         'neutral-1': '#EAE8E8',
         'neutral-0': '#F6F3F4'
       },
+      fontFamily: {
+        'outfit': ['"Outfit"', 'sans-serif'],
+      },
     },
   },
   plugins: [],
