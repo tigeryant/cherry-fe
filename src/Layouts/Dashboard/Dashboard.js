@@ -1,14 +1,9 @@
 import React from "react";
 import search from "../../Assets/Images/Icons/search.svg";
 import logo from "../../Assets/Images/Icons/logo.png";
+import { Form } from 'react-router-dom'
 
 const Dashboard = () => {
-  const handleSubmit = () => {
-    // redirect to results page, passing the search input as a parameter (for the api call)
-
-    // make an api call (getblockinfo), passing the search input as a parameter. redirect to the block results page, passing the response
-  }
-
   return (
     <section className="bg-neutral-0 mb-0 flex-grow flex flex-col justify-center items-center">
       <div className="w-6/12 h-fit flex border border-black justify-between items-center">
@@ -16,20 +11,25 @@ const Dashboard = () => {
         <h1 className="text-[210px] text-primary-3">Cherry</h1>
       </div>
       <div className="h-[48px] border border-neutral-6 w-6/12 flex items-center rounded-full mt-[16px]">
-        <form className="flex items-center justify-between px-[16px] w-full h-[80%]">
+        <Form 
+          className="flex items-center justify-between px-[16px] w-full h-[80%]"
+          method="get"
+          action="/block"
+          >
           <input
             className="bg-transparent flex-grow focus:outline-none h-full"
             type="text"
             placeholder="Search for block height, hash, transaction or address..."
+            name='userInput'
           ></input>
-          <button className="h-full" type="submit" onSubmit={handleSubmit}>
+          <button className="h-full" type="submit">
             <img
               className="h-full my-auto"
               src={search}
               alt="search icon"
             ></img>
           </button>
-        </form>
+        </ Form>
       </div>
     </section>
   );

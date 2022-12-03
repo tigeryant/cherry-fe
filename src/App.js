@@ -12,7 +12,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/results" element={<Block />} />
+          <Route path="/block" element={<Block />} />
         </Routes>
       </div>
       <Footer />
