@@ -1,12 +1,9 @@
 import './App.css';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
-    <>
-    <div className='h-[200px] w-[200px] bg-[#FFBAAB]'>
-      <p>Hello!</p>
-    </div>
-    </>
+      <Home />
   );
 }
 
