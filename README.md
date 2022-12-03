@@ -13,5 +13,4 @@ While the backend for Cherry is built, the Cherry frontend will make HTTP calls 
 
 ## Stack
 * React
-* Bootstrap
-* SASS
+* Tailwind
