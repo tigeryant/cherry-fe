@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+// import { useSearchParams } from 'react-router-dom'
+import { getBlock } from '../../../Utils/Api/http'
 
 const Block = () => {
-  const [userInput] = useSearchParams({})
-  // make an api call (getblockinfo), passing the search input as a parameter. redirect to the block results page, passing the response
-
+  // const [userInput] = useSearchParams({})
+  const hash = "00000000000000000003b5a5d4ca8b03fbae35d81df062b818b8116e4525cb23"
+  
   useEffect(() => {
-     console.log('userInput: ', userInput.get("userInput"))
-  }, [userInput]);
+    // console.log('userInput: ', userInput.get("userInput"))
+
+    getBlock(hash).then(
+      result => console.log('result', result)
+    )
+  }, [])
+  // }, [userInput]);
   
   return (
     <>
