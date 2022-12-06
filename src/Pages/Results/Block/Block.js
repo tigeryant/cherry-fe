@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { getBlock } from "../../../Utils/Api/http";
 import cube from "../../../Assets/Images/Icons/cube.svg";
+import back from '../../../Assets/Images/Icons/back.svg'
 
 const Block = () => {
   const [userInput] = useSearchParams({});
@@ -26,9 +27,11 @@ const Block = () => {
       <div className="w-6/12 h-full flex flex-col">
         {blockData && blockTimeStamp && (
           <>
-            <header className="flex flex-col pt-[50px]">
-              {/* back button should go here */}
-              <div className="flex items-center">
+            <header className="flex flex-col">
+              <Link to="/">
+                <img className="h-[50px] w-[50px] mt-[20px]" src={back} alt="back arrow icon"></img> 
+              </Link> 
+              <div className="flex items-center mt-[20px]">
                 <img
                   className="h-[125px] w-[125px]"
                   src={cube}
