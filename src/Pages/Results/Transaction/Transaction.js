@@ -6,7 +6,7 @@ import back from '../../../Assets/Images/Icons/back.svg'
 
 const Block = () => {
   const [userInput] = useSearchParams({});
-  const [txData, setTxData] = useState({});
+  const [txData, setTxData] = useState(null);
 
   useEffect(() => {
     const txid = userInput.get("userInput");
@@ -16,7 +16,6 @@ const Block = () => {
       const data = JSON.parse(response);
       console.log('data response: ', data)
       setTxData(data);
-      console.log('vout length', (data.vout.length))
     });
   }, [userInput]);
 
@@ -33,7 +32,7 @@ const Block = () => {
                 <img
                   className="h-[125px] w-[125px]"
                   src={transaction}
-                  alt="block icon"
+                  alt="transaction icon"
                 ></img>
                 <div className="flex">
                   <h2>Transaction</h2>

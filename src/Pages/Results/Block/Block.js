@@ -6,7 +6,7 @@ import back from '../../../Assets/Images/Icons/back.svg'
 
 const Block = () => {
   const [userInput] = useSearchParams({});
-  const [blockData, setBlockData] = useState({});
+  const [blockData, setBlockData] = useState(null);
   const [blockTimeStamp, setBlockTimeStamp] = useState(null);
 
   useEffect(() => {
