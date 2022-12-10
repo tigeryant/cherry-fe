@@ -15,7 +15,7 @@ A block explorer is an online tool that enables you to search for real-time and 
 * Tailwind
 
 ### Backend (serverless)
-* AWS Lambda
+* AWS Lambda (Python)
 * AWS API Gateway
 * AWS S3
 
