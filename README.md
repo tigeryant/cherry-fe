@@ -1,6 +1,6 @@
 # Cherry - Frontend
 ## Overview
-This React app serves as the frontend for Cherry, a Bitcoin block explorer. Cherry provides a search function which allows users to query the Bitcoin blockchain for information about blocks, transactions and addresses.
+This React app serves as the frontend for Cherry, a Bitcoin block explorer. Cherry provides a search function which allows users to query the Bitcoin blockchain for information about blocks, transactions and addresses. The backend repo can be found [here](https://github.com/tigeryant/cherry-lambdas/tree/main).
 
 <p align="center">
   <img src="https://i.imgur.com/barWqhe.png" height="450px"></img>
