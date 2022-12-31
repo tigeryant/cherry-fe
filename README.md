@@ -34,6 +34,9 @@ The React frontend is hosted as a static site with AWS S3. When the user complet
 * Bitcoin Core
 * Raspberry Pi
 
+### CI/CD
+* Serverless Framework
+
 ### Network protocols
 * SSH
 * HTTP
