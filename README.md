@@ -26,7 +26,7 @@ The React frontend is hosted as a static site with AWS S3. When the user complet
 * Tailwind
 
 ### Backend (serverless)
-* AWS Lambda (Python)
+* AWS Lambda (Python runtime)
 * AWS API Gateway
 * AWS S3
 
@@ -36,6 +36,11 @@ The React frontend is hosted as a static site with AWS S3. When the user complet
 
 ### CI/CD
 * Serverless Framework
+* GitHub Actions
+
+### Languages
+* Python 3.7
+* JavaScript
 
 ### Network protocols
 * SSH
