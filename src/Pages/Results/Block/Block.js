@@ -8,6 +8,7 @@ const Block = () => {
   const [userInput] = useSearchParams({});
   const [blockData, setBlockData] = useState(null);
   const [blockTimeStamp, setBlockTimeStamp] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const hash = userInput.get("userInput");
@@ -19,12 +20,16 @@ const Block = () => {
         let timestamp = new Date(unixTime);
         timestamp = timestamp.toLocaleString();
         setBlockTimeStamp(timestamp);
-    });
-  }, [userInput]);
+        setIsLoading(false)
+    })
+  }, [userInput, isLoading]);
 
   return (
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
       <div className="w-6/12 h-full flex flex-col">
+        {isLoading && 
+        <p>Loading...</p>
+        }
         {blockData && blockTimeStamp && (
           <>
             <header className="flex flex-col">
