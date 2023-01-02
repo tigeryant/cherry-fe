@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { getBlock } from "../../../Utils/Api/http";
+import Error from '../../Error/Error'
 import { SpinnerCircularFixed } from 'spinners-react'
 import cube from "../../../Assets/Images/Icons/cube.svg";
 import back from '../../../Assets/Images/Icons/back.svg'
@@ -10,20 +11,40 @@ const Block = () => {
   const [blockData, setBlockData] = useState(null);
   const [blockTimeStamp, setBlockTimeStamp] = useState(null);
   const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     const hash = userInput.get("userInput");
 
-    getBlock(hash).then(function (response) {
-        const data = response
-        setBlockData(data);
-        const unixTime = data.time * 1000;
-        let timestamp = new Date(unixTime);
-        timestamp = timestamp.toLocaleString();
-        setBlockTimeStamp(timestamp);
-        setIsLoading(false)
-    })
-  }, [userInput, isLoading]);
+    const getData = async () => {
+        try {
+            const response = await getBlock(hash)
+            const data = response.data
+            setBlockData(data);
+            const unixTime = data.time * 1000;
+            let timestamp = new Date(unixTime);
+            timestamp = timestamp.toLocaleString();
+            setBlockTimeStamp(timestamp);
+        } catch (error) {
+            setIsError(true)
+            if (error.response) {
+                // Request made and server responded
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+                } else if (error.request) {
+                // The request was made but no response was received
+                console.log(error.request);
+                } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+                }
+        } finally {
+            setIsLoading(false)
+        }
+    }
+    getData()
+  }, [userInput])
 
   return (
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
@@ -32,6 +53,9 @@ const Block = () => {
             <div className="m-auto">
                 <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
             </div>
+        }
+        {isError &&
+            <Error />
         }
         {blockData && blockTimeStamp && (
           <>
