@@ -17,7 +17,7 @@ module.exports = {
         'neutral-3': '#996E77',
         'neutral-2': '#BCACAF',
         'neutral-1': '#EAE8E8',
-        'neutral-0': '#F6F3F4'
+        'neutral-0': '#FEFEFE'
       },
       fontFamily: {
         'outfit': ['"Outfit"', 'sans-serif'],
