@@ -10,11 +10,9 @@ const Block = () => {
 
   useEffect(() => {
     const address = userInput.get("userInput");
-    console.log("user input: ", userInput.get("userInput"));
 
     getAddress(address).then(function (response) {
-      const data = JSON.parse(response);
-      console.log('data response: ', data)
+      const data = response;
       setAddressData(data);
     });
   }, [userInput]);

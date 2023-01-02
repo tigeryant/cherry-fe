@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export async function getBlock(blockHash) {
-//   console.log('env var: ', process.env.REACT_APP_GET_BLOCK_URL)
   const response = await axios.get(process.env.REACT_APP_GET_BLOCK_URL, { params: { hash: blockHash }})
   return response.data
 }

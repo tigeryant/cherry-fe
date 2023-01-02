@@ -13,12 +13,12 @@ const Block = () => {
     const hash = userInput.get("userInput");
 
     getBlock(hash).then(function (response) {
-      const data = JSON.parse(response);
-      setBlockData(data);
-      const unixTime = data.time * 1000;
-      let timestamp = new Date(unixTime);
-      timestamp = timestamp.toLocaleString();
-      setBlockTimeStamp(timestamp);
+        const data = response
+        setBlockData(data);
+        const unixTime = data.time * 1000;
+        let timestamp = new Date(unixTime);
+        timestamp = timestamp.toLocaleString();
+        setBlockTimeStamp(timestamp);
     });
   }, [userInput]);
 

@@ -10,11 +10,9 @@ const Block = () => {
 
   useEffect(() => {
     const txid = userInput.get("userInput");
-    console.log('user input: ', userInput.get("userInput"))
 
     getTx(txid).then(function (response) {
-      const data = JSON.parse(response);
-      console.log('data response: ', data)
+      const data = response;
       setTxData(data);
     });
   }, [userInput]);

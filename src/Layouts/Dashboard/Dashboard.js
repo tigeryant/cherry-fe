@@ -7,7 +7,6 @@ const Dashboard = () => {
   const [selected, setSelected] = useState('');
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     setSelected(event.target.value);
   }
 
