@@ -16,7 +16,7 @@ const Dashboard = () => {
         <img className="h-[250px] w-[250px]" src={logo} alt="cherry-logo"></img>
         <h1 className="text-[190px] text-primary-3">Cherry</h1>
       </div>
-      <div className="h-[48px] border border-neutral-6 w-6/12 flex items-center rounded-full mt-[16px]">
+      <div className="h-[48px] border-neutral-6 border-[2px] w-6/12 flex items-center rounded-full mt-[16px]">
         <Form 
           className="flex items-center justify-between px-[16px] w-full h-[80%]"
           method="get"
