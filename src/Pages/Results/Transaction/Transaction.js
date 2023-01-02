@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { getTx } from "../../../Utils/Api/http";
+import { SpinnerCircularFixed } from 'spinners-react'
 import transaction from "../../../Assets/Images/Icons/transaction.png";
 import back from '../../../Assets/Images/Icons/back.svg'
 
 const Block = () => {
   const [userInput] = useSearchParams({});
   const [txData, setTxData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const txid = userInput.get("userInput");
 
     getTx(txid).then(function (response) {
-      const data = response;
-      setTxData(data);
+        const data = response;
+        setTxData(data);
+        setIsLoading(false)
     });
-  }, [userInput]);
+  }, [userInput, isLoading]);
 
   return (
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
       <div className="w-6/12 h-full flex flex-col">
+        {isLoading && 
+            <div className="m-auto">
+                <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
+            </div>
+        }
         {txData && (
           <>
             <header className="flex flex-col">

@@ -29,9 +29,9 @@ const Block = () => {
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
       <div className="w-6/12 h-full flex flex-col">
         {isLoading && 
-        <div className="m-auto">
-            <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
-        </div>
+            <div className="m-auto">
+                <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
+            </div>
         }
         {blockData && blockTimeStamp && (
           <>

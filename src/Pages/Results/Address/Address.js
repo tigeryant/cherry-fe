@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { getAddress } from "../../../Utils/Api/http";
+import { SpinnerCircularFixed } from 'spinners-react'
 import address from "../../../Assets/Images/Icons/address.svg";
 import back from "../../../Assets/Images/Icons/back.svg";
 
 const Block = () => {
   const [userInput] = useSearchParams({});
   const [addressData, setAddressData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const address = userInput.get("userInput");
 
     getAddress(address).then(function (response) {
-      const data = response;
-      setAddressData(data);
+        const data = response;
+        setAddressData(data);
+        setIsLoading(false)
     });
-  }, [userInput]);
+  }, [userInput, isLoading]);
 
   return (
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
       <div className="w-6/12 h-full flex flex-col">
+        {isLoading && 
+            <div className="m-auto">
+                <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
+            </div>
+        }
         {addressData && (
           <>
             <header className="flex flex-col">
