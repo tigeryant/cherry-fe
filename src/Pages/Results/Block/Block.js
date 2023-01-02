@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { getBlock } from "../../../Utils/Api/http";
+import { SpinnerCircularFixed } from 'spinners-react'
 import cube from "../../../Assets/Images/Icons/cube.svg";
 import back from '../../../Assets/Images/Icons/back.svg'
 
@@ -28,7 +29,9 @@ const Block = () => {
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
       <div className="w-6/12 h-full flex flex-col">
         {isLoading && 
-        <p>Loading...</p>
+        <div className="m-auto">
+            <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
+        </div>
         }
         {blockData && blockTimeStamp && (
           <>
