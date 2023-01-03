@@ -13,7 +13,7 @@ const Block = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
-  useEffect(() => {
+useEffect(() => {
     const hash = userInput.get("userInput");
 
     const getData = async () => {

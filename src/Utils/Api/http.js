@@ -4,12 +4,10 @@ export function getBlock(blockHash) {
     return axios.get(process.env.REACT_APP_GET_BLOCK_URL, { params: { hash: blockHash }})
 }
 
-export async function getTx(txid) {
-    const response = await axios.get(process.env.REACT_APP_GET_TX_URL, { params: { txid: txid }})
-    return response.data
+export function getTx(txid) {
+    return axios.get(process.env.REACT_APP_GET_TX_URL, { params: { txid: txid }})
 }
 
-export async function getAddress(address) {
-    const response = await axios.get(process.env.REACT_APP_GET_ADDRESS_URL, { params: { address: address }})
-    return response.data
+export function getAddress(address) {
+    return axios.get(process.env.REACT_APP_GET_ADDRESS_URL, { params: { address: address }})
 }

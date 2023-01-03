@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { getAddress } from "../../../Utils/Api/http";
+import Error from '../../Error/Error'
 import { SpinnerCircularFixed } from 'spinners-react'
 import address from "../../../Assets/Images/Icons/address.svg";
 import back from "../../../Assets/Images/Icons/back.svg";
@@ -9,16 +10,36 @@ const Block = () => {
   const [userInput] = useSearchParams({});
   const [addressData, setAddressData] = useState(null);
   const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
 
-  useEffect(() => {
+useEffect(() => {
     const address = userInput.get("userInput");
 
-    getAddress(address).then(function (response) {
-        const data = response;
-        setAddressData(data);
-        setIsLoading(false)
-    });
-  }, [userInput, isLoading]);
+    const getData = async () => {
+        try {
+            const response = await getAddress(address)
+            const data = response.data
+            setAddressData(data)
+        } catch (error) {
+            setIsError(true)
+            if (error.response) {
+                // Request made and server responded
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+                } else if (error.request) {
+                // The request was made but no response was received
+                console.log(error.request);
+                } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+                }
+        } finally {
+            setIsLoading(false)
+        }
+    }
+    getData()
+  }, [userInput])
 
   return (
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
@@ -27,6 +48,9 @@ const Block = () => {
             <div className="m-auto">
                 <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
             </div>
+        }
+        {isError &&
+            <Error />
         }
         {addressData && (
           <>
