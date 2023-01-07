@@ -7,7 +7,7 @@
 }
 
 .results-container {
-    @apply w-11/12 sm:w-6/12 h-full flex flex-col;
+    @apply w-10/12 lg:w-6/12 h-full flex flex-col;
 }
 
 .result-icon {
@@ -32,6 +32,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 /* for removing autocomplete blue highlight */
 
