@@ -43,7 +43,7 @@ useEffect(() => {
 
   return (
     <section className="w-full flex-grow bg-neutral-0 flex justify-center">
-      <div className="w-6/12 h-full flex flex-col">
+      <div className="results-container">
         {isLoading && 
             <div className="m-auto">
                 <SpinnerCircularFixed color={'#C8042B'} secondaryColor={'#FFFFFF00'} size={100} />
@@ -57,14 +57,14 @@ useEffect(() => {
             <header className="flex flex-col">
               <Link to="/">
                 <img
-                  className="h-[50px] w-[50px] mt-[20px]"
+                  className="back-icon"
                   src={back}
                   alt="back arrow icon"
                 ></img>
               </Link>
               <div className="flex items-center mt-[20px]">
                 <img
-                  className="h-[125px] w-[125px]"
+                  className="result-icon"
                   src={address}
                   alt="address icon"
                 ></img>
@@ -72,7 +72,7 @@ useEffect(() => {
                   <h2>Address</h2>
                 </div>
               </div>
-              <p className="mt-[10px]">{addressData.address}</p>
+              <p className="break-all mt-[10px]">{addressData.address}</p>
             </header>
             <ul className="w-full mt-[50px]">
               <li className="blockdata-list-item">

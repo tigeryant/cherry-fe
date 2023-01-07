@@ -6,6 +6,18 @@
  @apply  w-full flex justify-between border-t-[1px] border-black py-[5px];
 }
 
+.results-container {
+    @apply w-11/12 sm:w-6/12 h-full flex flex-col;
+}
+
+.result-icon {
+    @apply  w-[85px] h-[85px] sm:h-[125px] sm:w-[125px];
+}
+
+.back-icon {
+    @apply  w-[35px] h-[35px] sm:h-[50px] sm:w-[50px] mt-[20px];
+}
+
 body {
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
