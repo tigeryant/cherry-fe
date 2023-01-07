@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <nav className="h-[64px] w-full border-b-[3px] border-primary-3 flex justify-around align-center bg-neutral-0">
-      <div className="w-6/12 h-full flex justify-between">
+      <div className="w-6/12 h-full flex justify-center sm:justify-between">
         <div className="flex items-center">
           <Link to="/" className="h-[80%]">
             <img className="h-full" src={logoSmall} alt="cherry logo"></img>
