@@ -18,6 +18,13 @@ The React frontend is hosted as a static site with AWS S3. When the user complet
 <p align="center">
   <img src="https://i.imgur.com/MWeQExx.png" height="450px"></img>
   <p>
+  
+## Challenges
+### Dynamic IP
+One challenge I faced while building this application concerns the dynamic nature of the IP used by the Bitcoin node (Raspberry Pi). The Lambda functions reference the IP of the Bitcoin node in order to communicate over SSH. This IP parameter is stored in the SSM parameter store (previously it was an environment variable). Every time the router to which the node is connected is restarted, the network (and thus the node) is assigned a new public IP. This causes the IP parameter which is referenced by the Lambdas to become invalid. In this scenario, each time the Lambda attempts to establish a connection to the node over SSH, it fails, and a 502 response is sent to the client.
+  
+In order to resolve this, I wrote a bash script that overwrites the IP parameter in SSM with the new IP value. This script is run every time the relevant network interface on the Raspberry Pi undergoes a state change. It uses the AWS CLI, and an IAM user that I created for this purpose.
+
 
 
 ## Stack
