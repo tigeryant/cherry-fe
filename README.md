@@ -6,14 +6,11 @@ This React app serves as the frontend for Cherry, a Bitcoin block explorer. Cher
   <img src="https://i.imgur.com/barWqhe.png" height="450px"></img>
   <p>
 
-## Deployed site url
-The deployed version of this site can be found [here](http://cherry-frontend.s3-website.eu-west-2.amazonaws.com/).
-
 ## What is a block explorer?
 A block explorer is an online tool that enables you to search for real-time and historical information about a blockchain, including data related to blocks, transactions, addresses, and more.
 
 ## Architecture
-The React frontend is hosted as a static site with AWS S3. When the user completes a form using the UI to search by block hash, transaction id or address, a corresponding HTTP request is made to AWS API Gateway. Using Lambda integration, API Gateway forwards this request to one of three Lambdas (one for block retrieval, one for address retrieval and one for transaction retrieval). Inside each lambda, an SSH client is implemented using the paramiko Python module. This SSH client connects to a Bitcoin full node (Raspberry Pi) inside a private subnet. From there, a bitcoin-cli command is executed, passing the user input as an argument. The response is returned to the Lambda, which then passes it back to the client. The React client parses the returned JSON and displays the output to the user.
+The React frontend is hosted as a static site with AWS S3. When the user completes a form using the UI to search by block hash, transaction id or address, a corresponding HTTP request is made to AWS API Gateway. Using Lambda integration, API Gateway forwards this request to one of three Lambdas (one for block retrieval, one for address retrieval and one for transaction retrieval). Inside each lambda, an SSH client is implemented using the paramiko Python module. This client connects to a Bitcoin full node (Raspberry Pi) via SSH. An RPC command is executed on the node, and the user input passed as an argument. The response is returned to the Lambda, which then passes it back to the client. The React client parses the returned JSON and displays the output to the user.
 
 <p align="center">
   <img src="https://i.imgur.com/HeBpmVd.png" height="450px"></img>
@@ -25,6 +22,9 @@ One challenge I faced while building this application concerns the dynamic natur
   
 In order to resolve this, I wrote a bash script that overwrites the IP parameter in SSM with the new IP value. This script is run every time the relevant network interface on the Raspberry Pi undergoes a state change. It uses the AWS CLI, and an IAM user that I created for this purpose.
 
+
+## Raspberry Pi repurposed
+Please note that this site is not currently being hosted in production, as I have repurposed the Pi to develop other projects.
 
 
 ## Stack
